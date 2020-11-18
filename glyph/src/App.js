@@ -1,16 +1,24 @@
 //glyph app for creating FOIA requests
-import React from 'react';
+import React, { useState} from 'react';
 import './App.css';
 
 function App() {
+  const [submitting, setSubmitting] = useState(false);
   const handleSubmit = event => {
     event.preventDefault();
-    alert('Form submitted!')
+    setSubmitting(true);
+
+    setTimeout(() => {
+      setSubmitting(false);
+    }, 3000)
   }
 
   return (
     <div className="wrapper">
-      <h1>Start your FOIA request!</h1>
+      <h1>Let's get started!</h1>
+      {submitting &&
+      <div>Submitting Form...</div>
+      }
       <form onSubmit={handleSubmit}>
       <fieldset>
         <label>
