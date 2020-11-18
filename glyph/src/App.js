@@ -3,10 +3,15 @@ import React from 'react';
 import './App.css';
 
 function App() {
+  const handleSubmit = event => {
+    event.preventDefault();
+    alert('Form submitted!')
+  }
+
   return (
     <div className="wrapper">
       <h1>Start your FOIA request!</h1>
-      <form>
+      <form onSubmit={handleSubmit}>
       <fieldset>
         <label>
           <p>Your Name</p>
