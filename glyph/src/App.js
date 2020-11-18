@@ -12,7 +12,9 @@ const formReducer = (state, event) => {
 }
 
 function App() {
+  const [formData, setFormData] = useReducer(formReducer, {});
   const [submitting, setSubmitting] = useState(false);
+  
   const handleSubmit = event => {
     event.preventDefault();
     setSubmitting(true);
