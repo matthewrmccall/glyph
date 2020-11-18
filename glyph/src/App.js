@@ -14,7 +14,7 @@ const formReducer = (state, event) => {
 function App() {
   const [formData, setFormData] = useReducer(formReducer, {});
   const [submitting, setSubmitting] = useState(false);
-  
+
   const handleSubmit = event => {
     event.preventDefault();
     setSubmitting(true);
@@ -35,7 +35,7 @@ function App() {
       <fieldset>
         <label>
           <p>Your Name</p>
-          <input name="name" />
+          <input name="name" onChange={setFormData}/>
         </label>
       </fieldset>
       <button type="submit">Submit</button>
