@@ -1,6 +1,15 @@
 //glyph app for creating FOIA requests
-import React, { useState} from 'react';
+// import React and use hooks to create objects
+import React, { useReducer, useState} from 'react';
 import './App.css';
+
+//function to pull name and value from event.target
+const formReducer = (state, event) => {
+  return {
+    ...state,
+    [event.target.name]: event.target.value
+  }
+}
 
 function App() {
   const [submitting, setSubmitting] = useState(false);
@@ -19,6 +28,7 @@ function App() {
       {submitting &&
       <div>Submitting Form...</div>
       }
+      // connect to JSX using an event handler
       <form onSubmit={handleSubmit}>
       <fieldset>
         <label>
