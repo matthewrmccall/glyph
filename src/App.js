@@ -5,7 +5,16 @@ import './App.css';
 
 // reducer function that takes inputs state and event
 const formReducer = (state, event) => {
-  if(event.reset) {}
+  if(event.reset) {
+    return {
+      name: '',
+      email: '',
+      phone: '',
+      type: '',
+      count: 0,
+      'contact': false
+    }
+  }
   return {
     ...state,
     // pass an event object with properties name and value
@@ -23,7 +32,10 @@ function App() {
 // show Submitting Form message for 3 sec on button click
     setTimeout(() => {
       setSubmitting(false);
-    }, 6000)
+      setFormData({
+        reset: true
+      })
+    }, 3000)
   }
 // function to pull the data from the event.target
 // and pass the object to setFormData
@@ -62,9 +74,9 @@ function App() {
           <p>Name</p>
           <input name="name" onChange={handleChange} value={formData.name}/>
           <p>Email</p>
-          <input name="email" onChange={handleChange}/>
+          <input name="email" onChange={handleChange} value={formData.email}/>
           <p>Phone (recommended)</p>
-          <input name="phone" onChange={handleChange}/>
+          <input name="phone" onChange={handleChange} value={formData.phone}/>
         </label>
       </fieldset>
 
@@ -74,13 +86,18 @@ function App() {
           <select name="type" onChange={handleChange} value={formData.type}>
             <option value="VA Claim">VA Claim</option>
             <option value="VA Appeal">VA Appeal</option>
-            <option value="I'm not sure">I'm not sure</option>
+            <option value="Not sure">I'm not sure</option>
           </select>
         </label>
 
         <label>
         <p>Input field is count</p>
-        <input type="number" name="count" onChange={handleChange} step="1" value={formData.count}/>
+        <input type="number"
+        name="count"
+        disabled={formData.type !== 'Not sure'}
+        onChange={handleChange}
+        step="1"
+        value={formData.count}/>
         </label>
 
         <label>
