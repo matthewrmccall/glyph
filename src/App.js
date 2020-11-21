@@ -69,7 +69,7 @@ function App() {
       }
 
       <form onSubmit={handleSubmit}>
-      <fieldset>
+      <fieldset disabled={submitting}>
         <label>
           <p>Name</p>
           <input name="name" onChange={handleChange} value={formData.name}/>
@@ -80,7 +80,7 @@ function App() {
         </label>
       </fieldset>
 
-      <fieldset>
+      <fieldset disabled={submitting}>
         <label>
           <p>Please choose an option:</p>
           <select name="type" onChange={handleChange} value={formData.type}>
@@ -106,7 +106,7 @@ function App() {
         </label>
       </fieldset>
 
-      <button type="submit">Submit</button>
+      <button type="submit" disabled={submitting}>Submit</button>
       </form>
     </div>
   )
